@@ -5,6 +5,7 @@ let router = express.Router();
 
 const initWebRoute = (app) => {
     router.get('/', homeController.getHomepage);  // chuyen sang controller xu ly truoc
+    router.get('/detail/user/:userId', homeController.getDetailPage)  // detail information user 
     
     router.get('/about', (req,res) => {
         res.send(`I'm NTP`)
