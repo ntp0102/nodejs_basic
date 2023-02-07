@@ -9,6 +9,9 @@ require('dotenv').config(); //khai bao file .env
 const app = express();
 const port = process.env.PORT || 8080; // truong hop ko doc dc .env se chon 8080
 
+app.use(express.urlencoded({ extended: true})); // gian luot hoa cac thong so gui len server
+app.use(express.json());
+
 
 //setup viewEngine
 configViewEngine(app);

@@ -1,55 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+    <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nodejs Basic</title>
     <link rel="stylesheet" href="./css/style.css" />
-  </head>
-  <body>
-    <div class="topnav" id="myTopnav">
-      <a href="#home" class="active">Home</a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
-      <a href="#about">About</a>
-      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
+    </head>
+    <body>
+        <div class="topnav" id="myTopnav">
+            <a href="#home" class="active">Home</a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
 
-    <div style="padding-left: 16px">
+        <div>
+            <div class="w3-container">
+                <div style="padding-left: 16px">
 
-      <h2>List Users table</h2>
-      <table>
+                    <h2>List Users table</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <% for(let i=0; i < dataUser.length; i++) { %>
+                                    <tr>
+                                        <td><%= dataUser[i].id %></td>
+                                        <td><%= dataUser[i].firstName %></td>
+                                        <td><%= dataUser[i].lastName %></td>
+                                        <td>
+                                            <a href="/detail/user/<%= dataUser[i].id%>" target="_blank">Detail</a>
+                                            <button>Edit</button>
+                                            <button>Delete</button>
+                                        </td>
+                                    </tr>
+                                <% } %>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="create-user-container">
+                <form action="/create-new-user" method="POST">
+                    <div><b>Create a new User:</b></div>
+                    <div>
+                        <label>FirstName</label>
+                        <input type="text" name="firstName">
+                    </div>
+                    <div>
+                        <label>LastName</label>
+                        <input type="text" name="lastName">
+                    </div>
+                    <div>
+                        <label>Email</label>
+                        <input type="email" name="email">
+                    </div>
+                    <div>
+                        <label>Address</label>
+                        <input type="text" name="address">
+                    </div>
+                    <div>
+                        <button type="submit" class="btn-submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <% for(let i=0; i < dataUser.length; i++) { %>
-                <tr>
-                    <td><%= dataUser[i].id %></td>
-                    <td><%= dataUser[i].firstName %></td>
-                    <td><%= dataUser[i].lastName %></td>
-                    <td>
-                        <a href="/detail/user/<%= dataUser[i].id%>" target="_blank">Detail</a>
-                        <button>Edit</button>
-                        <button>Delete</button>
-                    </td>
-                </tr>
-            <% } %>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- <img src="./image/leo.jpg"> -->
-  </body>
+        <!-- <img src="./image/leo.jpg"> -->
+    </body>
 </html>
