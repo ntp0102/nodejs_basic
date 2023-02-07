@@ -1,15 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-    <h1>Hello world ejs</h1>
-    <%= dataUser %>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nodejs Basic</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="topnav" id="myTopnav">
+      <a href="#home" class="active">Home</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+
+    <div style="padding-left: 16px">
+
+      <h2>List Users table</h2>
+      <table>
+
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% for(let i=0; i < dataUser.length; i++) { %>
+                <tr>
+                    <td><%= dataUser[i].id %></td>
+                    <td><%= dataUser[i].firstName %></td>
+                    <td><%= dataUser[i].lastName %></td>
+                    <td>
+                        <a href="/detail/user/<%= dataUser[i].id%>" target="_blank">Detail</a>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+            <% } %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <!-- <img src="./image/leo.jpg"> -->
-</body>
+  </body>
 </html>
