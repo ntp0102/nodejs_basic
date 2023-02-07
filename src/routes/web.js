@@ -7,6 +7,9 @@ const initWebRoute = (app) => {
     router.get('/', homeController.getHomepage);  // chuyen sang controller xu ly truoc
     router.get('/detail/user/:userId', homeController.getDetailPage)  // detail information user 
     router.post('/create-new-user', homeController.createNewUser)
+    router.get('/edit-user/:userId', homeController.getEditPage)
+    router.post('/update-user', homeController.postUpdateUser)
+    router.post('/delete-user', homeController.deleteUser)
     router.get('/about', (req,res) => {
         res.send(`I'm NTP`)
     })
