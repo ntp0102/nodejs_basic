@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nodejs Basic</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="topnav" id="myTopnav">
+      <a href="/">Home</a>
+      <a href="/upload" class="active">Upload file</a>
+
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+
+    <div class="upload-file-container">
+      <form
+        action="/upload-profile-pic"
+        enctype="multipart/form-data"
+        method="POST"
+      >
+        <div>
+          <label for="">Avatar:</label>
+          <input type="file" name="profile_pic" />
+        </div>
+        <div>
+          <button class="btn-save" type="submit">Save File</button>
+        </div>
+      </form>
+      <br />
+      <form action="/upload-multiple-pic" enctype="multipart/form-data" method="POST">
+        <div>
+          <label for="">Select Multiple file</label>
+          <input type="file" name="multiple_file" multiple/>
+        </div>
+        <div>
+            <button class="btn-save" type="submit">Save File</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- <img src="./image/leo.jpg"> -->
+  </body>
+</html>
