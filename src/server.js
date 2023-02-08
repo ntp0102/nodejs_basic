@@ -1,7 +1,8 @@
 import express from 'express';
 import configViewEngine from './configs/viewEngine';
 import initWebroute from './routes/web';
-import connection from './configs/connectDB'
+import initAPIRoute from './routes/api';
+// import connection from './configs/connectDB'
 
 
 require('dotenv').config(); //khai bao file .env
@@ -17,6 +18,8 @@ app.use(express.json());
 configViewEngine(app);
 //init web route
 initWebroute(app);
+
+initAPIRoute(app);
 
 
 app.listen(port, () => {
