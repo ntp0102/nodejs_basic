@@ -97,7 +97,7 @@ th {
   text-align: center;
 }
 
-.update-user-container label{
+.update-user-container label {
   display: block;
 }
 
@@ -106,10 +106,19 @@ th {
   cursor: pointer;
 }
 
-.upload-file-container{
+.upload-file-container {
   padding: 15px;
 }
 
-.upload-file-container label{
+.upload-file-container label {
   display: block;
+}
+
+.btn-detail {
+  border: 1px solid #ccc;
+  padding: 1px;
+  font-size: 15px;
+}
+.btn-detail:link {
+  text-decoration: none;
 }

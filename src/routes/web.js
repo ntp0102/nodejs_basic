@@ -58,6 +58,12 @@ let upload = multer({
   fileFilter: fileFilter,
 });
 
+let uploadMultiple = multer({
+  storage: storage,
+  limits: { fileSize: maxSize },
+  fileFilter: fileFilter,
+}).array("multiple_file", 3);
+
 const initWebRoute = (app) => {
   router.get("/", homeController.getHomepage); // chuyen sang controller xu ly truoc
   router.get("/detail/user/:userId", homeController.getDetailPage); // detail information user
@@ -74,7 +80,26 @@ const initWebRoute = (app) => {
   );
   router.post(
     "/upload-multiple-pic",
-    upload.single("multiple_file"),
+    (req, res, next) => {
+      uploadMultiple(req, res, (err) => {
+        console.log("Check in middlewave");
+        if (
+          err instanceof multer.MulterError &&
+          err.code === "LIMIT_UNEXPECTED_FILE"
+        ) {
+          console.log("Check in err1");
+
+          res.send("LIMIT_UNEXPECTED_FILE");
+        } else if (err) {
+          res.send(err);
+        }
+        else {
+          // make sure to call next() if all was well
+          console.log("Check in next()");
+          next();
+        }
+      });
+    },
     homeController.handleUploadMultipleFile
   );
   router.get("/about", (req, res) => {
